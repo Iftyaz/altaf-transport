@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altaf Trade and Transport | Building Bangladesh, Delivering Strength</title>
+    <style>
+        :root {
+            --navy: #0D2137;
+            --orange: #E67E22;
+            --orange-light: #FDEBD0;
+            --white: #FFFFFF;
+            --gray-bg: #F4F6F8;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+            --green: #27AE60;
+            --border: #E0E4E8;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Noto Sans Bengali', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--navy);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .nav-logo svg {
+            width: 42px;
+            height: 42px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #ccd6e0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+        .lang-toggle {
+            background: transparent;
+            border: 1.5px solid var(--orange);
+            color: var(--orange);
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.25s;
+        }
+        .lang-toggle:hover {
+            background: var(--orange);
+            color: var(--white);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #143258 50%, #0a1929 100%);
+            color: var(--white);
+            padding: 90px 24px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 70%, rgba(230, 126, 34, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(39, 174, 96, 0.08) 0%, transparent 50%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 span {
+            color: var(--orange);
+        }
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #bcc8d6;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+        .hero .tagline-bn {
+            font-size: 1.15rem;
+            color: #a0b0c0;
+            margin-bottom: 32px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: #d4701a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(230, 126, 34, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-left: 12px;
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 80px 24px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            background: var(--gray-bg);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--white);
+            padding: 28px 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--orange);
+        }
+        .stat-card .num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .stat-card .label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ── SERVICES ── */
+        #services {
+            background: var(--white);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--orange);
+            box-shadow: 0 12px 32px rgba(230, 126, 34, 0.12);
+        }
+        .service-icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        .service-card h4 {
+            color: var(--navy);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ── FLEET ── */
+        #fleet {
+            background: var(--gray-bg);
+        }
+        .fleet-table-wrapper {
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-width: 700px;
+        }
+        thead {
+            background: var(--navy);
+            color: var(--white);
+        }
+        th {
+            padding: 16px 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+        }
+        tbody tr:hover {
+            background: #fafbfc;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--orange-light);
+            color: var(--orange);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ── PRICING ── */
+        #pricing {
+            background: var(--white);
+        }
+        .pricing-note {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .price-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        .price-card.featured {
+            border: 2px solid var(--orange);
+            position: relative;
+        }
+        .price-card.featured::before {
+            content: 'Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange);
+            color: white;
+            padding: 4px 18px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .price-card h4 {
+            color: var(--navy);
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+        .price-card .vehicle-type {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        .price-card .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .price-card .price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        .price-card ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .price-card ul li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-bottom: 1px dotted var(--border);
+        }
+        .price-card ul li::before {
+            content: '✓ ';
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--navy);
+            color: var(--white);
+        }
+        #contact .section-title h2 {
+            color: var(--white);
+        }
+        #contact .section-title p {
+            color: #a0b0c0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .contact-info .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .contact-info .info-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .contact-info .info-item strong {
+            display: block;
+            font-size: 0.95rem;
+        }
+        .contact-info .info-item span {
+            color: #bcc8d6;
+            font-size: 0.9rem;
+        }
+        .contact-info a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 12px;
+            transition: all 0.3s;
+        }
+        .whatsapp-btn:hover {
+            background: #1fb855;
+            transform: translateY(-2px);
+        }
+        .contact-map {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+        }
+        .contact-map p {
+            color: #bcc8d6;
+            margin-bottom: 12px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #091520;
+            color: #8899aa;
+            text-align: center;
+            padding: 28px 24px;
+            font-size: 0.9rem;
+        }
+        footer span {
+            color: var(--orange);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                padding: 20px;
+                gap: 16px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .tagline {
+                font-size: 1rem;
+            }
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+            section {
+                padding: 50px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar">
+        <a href="#" class="nav-logo">
+            <!-- SVG Logo -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#E67E22" stroke-width="3"/>
+                <text x="50" y="38" text-anchor="middle" fill="#E67E22" font-size="22" font-weight="800" font-family="Arial">ATT</text>
+                <rect x="28" y="50" width="44" height="28" rx="4" fill="#E67E22" opacity="0.9"/>
+                <circle cx="38" cy="82" r="7" fill="#0D2137"/>
+                <circle cx="62" cy="82" r="7" fill="#0D2137"/>
+                <rect x="32" y="56" width="8" height="6" rx="1" fill="#0D2137" opacity="0.6"/>
+                <rect x="44" y="56" width="8" height="6" rx="1" fill="#0D2137" opacity="0.6"/>
+                <rect x="56" y="56" width="8" height="6" rx="1" fill="#0D2137" opacity="0.6"/>
+                <line x1="20" y1="30" x2="25" y2="25" stroke="#27AE60" stroke-width="3" stroke-linecap="round"/>
+                <line x1="25" y1="30" x2="30" y2="25" stroke="#27AE60" stroke-width="3" stroke-linecap="round"/>
+                <line x1="30" y1="30" x2="35" y2="25" stroke="#27AE60" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>Altaf Trade &amp; Transport</span>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" data-en="About" data-bn="পরিচিতি">About</a></li>
+            <li><a href="#services" data-en="Services" data-bn="সেবাসমূহ">Services</a></li>
+            <li><a href="#fleet" data-en="Fleet" data-bn="গাড়ির বহর">Fleet</a></li>
+            <li><a href="#pricing" data-en="Pricing" data-bn="মূল্য তালিকা">Pricing</a></li>
+            <li><a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
+            <li><button class="lang-toggle" id="langToggle" onclick="toggleLang()">বাংলা</button></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 data-en="Altaf <span>Trade &amp; Transport</span>" data-bn="আলতাফ <span>ট্রেড এন্ড ট্রান্সপোর্ট</span>">
+                Altaf <span>Trade &amp; Transport</span>
+            </h1>
+            <p class="tagline" data-en="Building Bangladesh, Delivering Strength" data-bn="সারা বাংলাদেশে নির্ভরযোগ্য নির্মাণ সামগ্রী পরিবহন">
+                Building Bangladesh, Delivering Strength
+            </p>
+            <p class="tagline-bn" data-en="Reliable construction material transport across all of Bangladesh" data-bn="রড, সিমেন্ট, বালু ও ইট পরিবহনে আপনার বিশ্বস্ত অংশীদার">
+                Reliable construction material transport across all of Bangladesh
+            </p>
+            <a href="#contact" class="btn btn-primary" data-en="Get a Quote" data-bn="যোগাযোগ করুন">Get a Quote</a>
+            <a href="#services" class="btn btn-outline" data-en="Our Services" data-bn="আমাদের সেবা">Our Services</a>
+        </div>
+    </header>
+
+    <!-- ═══════════ ABOUT ═══════════ -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="About Us" data-bn="আমাদের সম্পর্কে">About Us</h2>
+                <p data-en="Your trusted partner for construction material logistics across Bangladesh" data-bn="বাংলাদেশজুড়ে নির্মাণ সামগ্রী পরিবহনে আপনার বিশ্বস্ত অংশীদার">Your trusted partner for construction material logistics across Bangladesh</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3 data-en="Delivering Quality Materials Since Day One" data-bn="প্রথম দিন থেকেই মানসম্মত সেবা প্রদান">Delivering Quality Materials Since Day One</h3>
+                    <p data-en="Altaf Trade and Transport specializes in the safe and timely delivery of construction materials — rod (MS steel), cement, sand, and bricks — to project sites across all 64 districts of Bangladesh. Whether you're building a home, a commercial complex, or an infrastructure project, we ensure your materials arrive on schedule and in perfect condition." data-bn="আলতাফ ট্রেড এন্ড ট্রান্সপোর্ট বাংলাদেশের ৬৪টি জেলায় নির্মাণ সামগ্রী — রড, সিমেন্ট, বালু ও ইট — নিরাপদে ও সময়মতো পৌঁছে দেয়। বাড়ি, বাণিজ্যিক ভবন বা অবকাঠামো প্রকল্প — সবখানেই আমরা নির্ভরযোগ্য পরিবহন সেবা নিশ্চিত করি।">Altaf Trade and Transport specializes in the safe and timely delivery of construction materials — rod (MS steel), cement, sand, and bricks — to project sites across all 64 districts of Bangladesh. Whether you're building a home, a commercial complex, or an infrastructure project, we ensure your materials arrive on schedule and in perfect condition.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="num">64</div>
+                        <div class="label" data-en="Districts Covered" data-bn="জেলা কভার">Districts Covered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="num">4</div>
+                        <div class="label" data-en="Material Types" data-bn="পণ্যের ধরন">Material Types</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="num">24/7</div>
+                        <div class="label" data-en="Service Available" data-bn="সেবা চালু">Service Available</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="num">100%</div>
+                        <div class="label" data-en="On-Time Delivery" data-bn="সময়মতো ডেলিভারি">On-Time Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ SERVICES ═══════════ -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="What We Transport" data-bn="আমরা যা পরিবহন করি">What We Transport</h2>
+                <p data-en="Four essential construction materials — delivered anywhere in Bangladesh" data-bn="চারটি প্রয়োজনীয় নির্মাণ সামগ্রী — বাংলাদেশের যেকোনো স্থানে পরিবহন">Four essential construction materials — delivered anywhere in Bangladesh</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔩</div>
+                    <h4 data-en="MS Rod / Rebar" data-bn="এমএস রড / রিবার">MS Rod / Rebar</h4>
+                    <p data-en="All grades &amp; sizes of reinforcing steel bars for structural work. Transported securely on flatbed trucks." data-bn="স্ট্রাকচারাল কাজের জন্য সব গ্রেড ও সাইজের রড। ফ্ল্যাটবেড ট্রাকে নিরাপদ পরিবহন।">All grades &amp; sizes of reinforcing steel bars for structural work. Transported securely on flatbed trucks.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧱</div>
+                    <h4 data-en="Cement" data-bn="সিমেন্ট">Cement</h4>
+                    <p data-en="Bulk and bagged cement from all major brands. Covered transport to protect from weather." data-bn="বাল্ক ও বস্তা সিমেন্ট — সব প্রধান ব্র্যান্ড। আবহাওয়া থেকে সুরক্ষিত কাভার্ড পরিবহন।">Bulk and bagged cement from all major brands. Covered transport to protect from weather.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏖️</div>
+                    <h4 data-en="Sand" data-bn="বালু">Sand</h4>
+                    <p data-en="Sylhet sand, local sand, and coarse sand. Measured in CFT with accurate loading." data-bn="সিলেট বালু, লোকাল বালু ও খোয়া। সিএফটি হিসাবে সঠিক পরিমাপে লোডিং।">Sylhet sand, local sand, and coarse sand. Measured in CFT with accurate loading.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧱</div>
+                    <h4 data-en="Bricks" data-bn="ইট">Bricks</h4>
+                    <p data-en="First-class, second-class &amp; picket bricks. Careful loading to minimize breakage." data-bn="প্রথম শ্রেণী, দ্বিতীয় শ্রেণী ও পিকেট ইট। ভাঙন কমানোর জন্য সাবধানে লোডিং।">First-class, second-class &amp; picket bricks. Careful loading to minimize breakage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FLEET ═══════════ -->
+    <section id="fleet">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Fleet &amp; Capacity" data-bn="গাড়ির বহর ও ধারণক্ষমতা">Fleet &amp; Capacity</h2>
+                <p data-en="Vehicle types and their material carrying capacities" data-bn="গাড়ির ধরন ও পণ্য পরিবহন ক্ষমতা">Vehicle types and their material carrying capacities</p>
+            </div>
+            <div class="fleet-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-en="Vehicle Type" data-bn="গাড়ির ধরন">Vehicle Type</th>
+                            <th data-en="Capacity (Ton)" data-bn="ক্ষমতা (টন)">Capacity (Ton)</th>
+                            <th data-en="Sand (CFT)" data-bn="বালু (সিএফটি)">Sand (CFT)</th>
+                            <th data-en="Bricks (Pcs)" data-bn="ইট (পিস)">Bricks (Pcs)</th>
+                            <th data-en="Cement (Bags)" data-bn="সিমেন্ট (বস্তা)">Cement (Bags)</th>
+                            <th data-en="Rod (Ton)" data-bn="রড (টন)">Rod (Ton)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge" data-en="Mini Pickup" data-bn="মিনি পিকআপ">Mini Pickup</span></td>
+                            <td>1 – 1.5</td>
+                            <td>30 – 40</td>
+                            <td>500 – 800</td>
+                            <td>20 – 30</td>
+                            <td>1 – 1.5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" data-en="Large Pickup" data-bn="বড় পিকআপ">Large Pickup</span></td>
+                            <td>2 – 3</td>
+                            <td>60 – 80</td>
+                            <td>1,000 – 1,500</td>
+                            <td>40 – 60</td>
+                            <td>2 – 3</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" data-en="5-Wheeler Truck" data-bn="৫-চাকার ট্রাক">5-Wheeler Truck</span></td>
+                            <td>5 – 7</td>
+                            <td>150 – 200</td>
+                            <td>2,500 – 3,500</td>
+                            <td>100 – 140</td>
+                            <td>5 – 7</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" data-en="10-Wheeler Truck" data-bn="১০-চাকার ট্রাক">10-Wheeler Truck</span></td>
+                            <td>10 – 15</td>
+                            <td>300 – 400</td>
+                            <td>5,000 – 7,000</td>
+                            <td>200 – 280</td>
+                            <td>10 – 15</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" data-en="Trailer" data-bn="ট্রেইলার">Trailer</span></td>
+                            <td>20 – 30</td>
+                            <td>500 – 700</td>
+                            <td>8,000 – 12,000</td>
+                            <td>400 – 550</td>
+                            <td>20 – 30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PRICING ═══════════ -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Demo Price List" data-bn="ডেমো মূল্য তালিকা">Demo Price List</h2>
+                <p data-en="Estimated starting prices. Final rates depend on distance, quantity &amp; material type." data-bn="আনুমানিক প্রারম্ভিক মূল্য। দূরত্ব, পরিমাণ ও পণ্যের ধরন অনুযায়ী চূড়ান্ত মূল্য নির্ধারিত হবে।">Estimated starting prices. Final rates depend on distance, quantity &amp; material type.</p>
+            </div>
+            <p class="pricing-note" data-en="⚠️ All prices are approximate and for demo purposes only. Contact us for an exact quote." data-bn="⚠️ সব মূল্য আনুমানিক ও ডেমো উদ্দেশ্যে। সঠিক মূল্যের জন্য যোগাযোগ করুন।">⚠️ All prices are approximate and for demo purposes only. Contact us for an exact quote.</p>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h4 data-en="Within City" data-bn="শহরের ভিতরে">Within City</h4>
+                    <div class="vehicle-type" data-en="Same city / up to 20 km" data-bn="একই শহর / ২০ কিমি পর্যন্ত">Same city / up to 20 km</div>
+                    <div class="price">৳1,500 <small data-en="starting" data-bn="থেকে">starting</small></div>
+                    <ul>
+                        <li data-en="Mini Pickup load" data-bn="মিনি পিকআপ লোড">Mini Pickup load</li>
+                        <li data-en="Sand / Bricks / Cement" data-bn="বালু / ইট / সিমেন্ট">Sand / Bricks / Cement</li>
+                        <li data-en="Same-day delivery" data-bn="একই দিনে ডেলিভারি">Same-day delivery</li>
+                    </ul>
+                </div>
+                <div class="price-card featured">
+                    <h4 data-en="Within District" data-bn="জেলার ভিতরে">Within District</h4>
+                    <div class="vehicle-type" data-en="Up to 80 km" data-bn="৮০ কিমি পর্যন্ত">Up to 80 km</div>
+                    <div class="price">৳4,000 <small data-en="starting" data-bn="থেকে">starting</small></div>
+                    <ul>
+                        <li data-en="5-Wheeler Truck load" data-bn="৫-চাকার ট্রাক লোড">5-Wheeler Truck load</li>
+                        <li data-en="Any material type" data-bn="যেকোনো পণ্য">Any material type</li>
+                        <li data-en="1-2 day delivery" data-bn="১-২ দিনে ডেলিভারি">1-2 day delivery</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h4 data-en="Inter-District" data-bn="আন্তঃজেলা">Inter-District</h4>
+                    <div class="vehicle-type" data-en="80 – 250 km" data-bn="৮০ – ২৫০ কিমি">80 – 250 km</div>
+                    <div class="price">৳10,000 <small data-en="starting" data-bn="থেকে">starting</small></div>
+                    <ul>
+                        <li data-en="10-Wheeler Truck load" data-bn="১০-চাকার ট্রাক লোড">10-Wheeler Truck load</li>
+                        <li data-en="All materials available" data-bn="সব পণ্য উপলব্ধ">All materials available</li>
+                        <li data-en="2-3 day delivery" data-bn="২-৩ দিনে ডেলিভারি">2-3 day delivery</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h4 data-en="Long Haul" data-bn="দূরপাল্লা">Long Haul</h4>
+                    <div class="vehicle-type" data-en="250+ km / Cross-country" data-bn="২৫০+ কিমি / সারাদেশ">250+ km / Cross-country</div>
+                    <div class="price">৳20,000 <small data-en="starting" data-bn="থেকে">starting</small></div>
+                    <ul>
+                        <li data-en="Trailer / 10-Wheeler" data-bn="ট্রেইলার / ১০-চাকা">Trailer / 10-Wheeler</li>
+                        <li data-en="Bulk orders welcome" data-bn="বাল্ক অর্ডার স্বাগত">Bulk orders welcome</li>
+                        <li data-en="3-5 day delivery" data-bn="৩-৫ দিনে ডেলিভারি">3-5 day delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Contact Us" data-bn="যোগাযোগ করুন">Contact Us</h2>
+                <p data-en="Call or message us for bookings, quotes, or any questions" data-bn="বুকিং, মূল্য জিজ্ঞাসা বা যেকোনো প্রশ্নের জন্য কল বা মেসেজ করুন">Call or message us for bookings, quotes, or any questions</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong data-en="Phone" data-bn="ফোন">Phone</strong>
+                            <a href="tel:+8801979306502">01979-306502</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">✉️</span>
+                        <div>
+                            <strong data-en="Email" data-bn="ইমেইল">Email</strong>
+                            <a href="mailto:iftyazhossain@gmail.com">iftyazhossain@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong data-en="Service Area" data-bn="সেবার এলাকা">Service Area</strong>
+                            <span data-en="All 64 districts of Bangladesh" data-bn="বাংলাদেশের ৬৪টি জেলা">All 64 districts of Bangladesh</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕐</span>
+                        <div>
+                            <strong data-en="Hours" data-bn="সময়সূচী">Hours</strong>
+                            <span data-en="Available 24/7 for bookings &amp; inquiries" data-bn="বুকিং ও জিজ্ঞাসার জন্য ২৪/৭ খোলা">Available 24/7 for bookings &amp; inquiries</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/8801979306502" target="_blank" rel="noopener" class="whatsapp-btn">
+                        💬 <span data-en="Book via WhatsApp" data-bn="হোয়াটসঅ্যাপে বুকিং">Book via WhatsApp</span>
+                    </a>
+                </div>
+                <div class="contact-map">
+                    <p data-en="📍 We operate across all of Bangladesh — from Dhaka to Chattogram, Sylhet to Khulna, and everywhere in between." data-bn="📍 আমরা সারা বাংলাদেশে সেবা প্রদান করি — ঢাকা থেকে চট্টগ্রাম, সিলেট থেকে খুলনা, সবখানে।">📍 We operate across all of Bangladesh — from Dhaka to Chattogram, Sylhet to Khulna, and everywhere in between.</p>
+                    <p style="margin-top:16px;"><strong data-en="Call now to book your transport:" data-bn="এখনই বুকিং এর জন্য কল করুন:">Call now to book your transport:</strong><br>
+                        <a href="tel:+8801979306502" style="color:#E67E22;font-size:1.3rem;font-weight:800;">01979-306502</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer>
+        <p>&copy; 2026 <span>Altaf Trade &amp; Transport</span> —
+            <span data-en="Building Bangladesh, Delivering Strength" data-bn="সারা বাংলাদেশে নির্ভরযোগ্য নির্মাণ সামগ্রী পরিবহন">Building Bangladesh, Delivering Strength</span>
+        </p>
+        <p style="margin-top:6px;font-size:0.8rem;" data-en="Rod · Cement · Sand · Bricks — All Bangladesh" data-bn="রড · সিমেন্ট · বালু · ইট — সারা বাংলাদেশ">Rod · Cement · Sand · Bricks — All Bangladesh</p>
+    </footer>
+
+    <!-- ═══════════ SCRIPTS ═══════════ -->
+    <script>
+        // Language toggle
+        let currentLang = 'en';
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'bn' : 'en';
+            const btn = document.getElementById('langToggle');
+            btn.textContent = currentLang === 'en' ? 'বাংলা' : 'English';
+
+            document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + currentLang);
+            });
+
+            // Update document title
+            if (currentLang === 'bn') {
+                document.title = 'আলতাফ ট্রেড এন্ড ট্রান্সপোর্ট | সারা বাংলাদেশে নির্মাণ সামগ্রী পরিবহন';
+                document.documentElement.lang = 'bn';
+            } else {
+                document.title = 'Altaf Trade and Transport | Building Bangladesh, Delivering Strength';
+                document.documentElement.lang = 'en';
+            }
+
+            localStorage.setItem('att-lang', currentLang);
+        }
+
+        // Load saved language
+        const savedLang = localStorage.getItem('att-lang');
+        if (savedLang === 'bn') {
+            toggleLang();
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
